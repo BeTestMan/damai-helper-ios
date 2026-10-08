@@ -1,15 +1,23 @@
 {
   "expo": {
-    "name": "damai-helper-ios",
+    "name": "DamaiHelper",
     "slug": "damai-helper-ios",
+    "scheme": "damaihelper",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "com.damaihelper.timing",
+      "buildNumber": "1",
+      "infoPlist": {
+        "CFBundleDisplayName": "大麦助手",
+        "LSApplicationQueriesSchemes": ["damai", "damaiticket"]
+      }
     },
     "android": {
+      "package": "com.damaihelper.timing",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/android-icon-foreground.png",
@@ -20,6 +28,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": ["expo-router", "expo-notifications"]
   }
 }
