@@ -13,7 +13,9 @@ env:
 
 jobs:
   build:
-    runs-on: macos-15
+    # Xcode 26 / Swift 6.2：RN 0.86 + Expo SDK 57 的 SwiftPM 依赖要求 swift-tools 6.2，
+    # macos-15 自带的是 Xcode 16（Swift 6.1），会在解析包依赖时直接失败。
+    runs-on: macos-26
     timeout-minutes: 60
 
     steps:
@@ -23,6 +25,12 @@ jobs:
         with:
           node-version: 22
           cache: npm
+
+      - name: Print toolchain versions
+        run: |
+          xcodebuild -version
+          swift --version
+          xcrun --sdk iphoneos --show-sdk-version
 
       - name: Install dependencies
         run: npm ci
